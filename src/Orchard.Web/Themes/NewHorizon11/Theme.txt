@@ -1,0 +1,9 @@
+Name: NewHorizon11
+Author: styleshout
+Website: http://www.styleshout.com/
+Description: Translated by nguyenxuancong@gmail.com
+Version: 1.0
+BaseTheme: TheThemeMachine
+# todo: provide tags
+# Tags: Classic, Serif
+Zones: Header, Navigation,SearchForm, Featured, BeforeMain, AsideFirst, Messages, BeforeContent, Content, AfterContent, AsideSecond, AfterMain, TripelFirst, TripelSecond, TripelThird, Footer

@@ -1,0 +1,16 @@
+﻿@*doing excerpt generation on the way out for now so we don't stick ourselves with needing to regen excerpts for existing data
+  also, doing this here, inline, until we have a pluggable processing model (both in and out)
+  also, ...this is ugly *@
+@{ 
+    Orchard.ContentManagement.ContentItem contentItem = Model.ContentPart.ContentItem;
+    var commentsCount = Model.ContentPart.ContentItem.CommentsPart.Comments.Count;
+    
+    string bodyHtml = Model.Html.ToString();
+    var body = new HtmlString(Html.Excerpt(bodyHtml, 200).ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>")); 
+}
+<p>@body</p>
+<p class="post-footer align-right">
+    <a href="@Url.ItemDisplayUrl(contentItem)" class="readmore">@T("Read more").ToString()</a>
+    <a class="comments" href="@Url.ItemDisplayUrl(contentItem)#comments">@T("Comments ({0})",commentsCount).ToString()</a>
+    <span class="date">@Display.PublishedState(createdDateTimeUtc: Model.ContentPart.ContentItem.CommonPart.CreatedUtc, publisheddateTimeUtc: Model.ContentPart.ContentItem.CommonPart.PublishedUtc)</span>
+</p>
